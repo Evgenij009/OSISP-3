@@ -194,6 +194,8 @@ void AnalyzeDirectoryContent(char *DirectoryPath, char *KeyFilePath)
 			if (errno)
 				ProceedErrors(strerror(errno), DirectoryPath);
 		}
+		if (closedir(Directory) == -1)
+			ProceedErrors(strerror(errno), DirectoryPath);
 	}
 	else
 		ProceedErrors(strerror(errno), DirectoryPath);
