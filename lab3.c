@@ -17,7 +17,7 @@
 
 //9.Написать программу шифрации всех файлов заданного каталога и его подкаталогов. Пользователь задаёт имя каталога. Главный процесс открывает каталоги и запускает для каждого файла каталога и отдельный процесс шифрации. Каждый процесс выводит на экран свой pid, полный путь к файлу, общее число зашифрованных байт. Шифрация по алгоритму сложения по модулю 2 бит исходного файла и файла ключа. Число одновременно работающих процессов не должно превышать N (вводится пользователем). Проверить работу программы для каталога /etc
 
-#define maxsize 65535
+#define maxsize 65535 //512Kb
 #define false 0
 #define true 1
 
@@ -141,7 +141,7 @@ void EncryptFile(char *SourceFilePath, char *KeyFilePath, char *CypherFilePath, 
 			}
 		} while (SourceFileReadInfo > 0);
 	}
-	printf("%d %s %zu \n", getpid(), SourceFilePath, FullReadSize);
+	printf("Pid: %d Path: %s Encrypted bytes: %zu \n", getpid(), SourceFilePath, FullReadSize);
 }
 
 void ProcessesCountCheck()
